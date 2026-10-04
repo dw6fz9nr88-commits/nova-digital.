@@ -1,1 +1,890 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+  <title>NOVA DIGITAL — Digital Solutions</title>
+  <meta name="description" content="NOVA DIGITAL — создание современных сайтов, AI-решений и digital-продуктов.">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: #07070a;
+      color: #fff;
+      line-height: 1.5;
+      overflow-x: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    /* Якорные секции не уезжают под фиксированный хедер */
+    section[id] {
+      scroll-margin-top: 96px;
+    }
+
+    .container {
+      width: min(1120px, 92%);
+      margin: 0 auto;
+    }
+
+    /* ДОСТУПНОСТЬ: видимый фокус для клавиатуры */
+
+    a:focus-visible,
+    button:focus-visible {
+      outline: 2px solid #7c5cff;
+      outline-offset: 3px;
+      border-radius: 12px;
+    }
+
+    /* NAVIGATION */
+
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+      background: rgba(7, 7, 10, 0.75);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    nav {
+      height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .logo {
+      font-size: 21px;
+      font-weight: 800;
+      letter-spacing: 3px;
+      flex-shrink: 0;
+    }
+
+    .logo span {
+      color: #7c5cff;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      list-style: none;
+      font-size: 14px;
+      color: #b8b8c4;
+    }
+
+    .nav-links a {
+      transition: color 0.25s;
+    }
+
+    .nav-links a:hover {
+      color: #fff;
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-shrink: 0;
+    }
+
+    .nav-button {
+      padding: 11px 19px;
+      border: 1px solid rgba(124, 92, 255, 0.7);
+      border-radius: 30px;
+      font-size: 14px;
+      white-space: nowrap;
+      transition: 0.3s;
+    }
+
+    .nav-button:hover {
+      background: #7c5cff;
+      box-shadow: 0 0 30px rgba(124, 92, 255, 0.35);
+    }
+
+    /* Бургер (виден только на мобильных) */
+
+    .nav-toggle {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      gap: 5px;
+      width: 44px;
+      height: 44px;
+      padding: 0 10px;
+      background: transparent;
+      border: 1px solid #292934;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+
+    .nav-toggle span {
+      display: block;
+      width: 100%;
+      height: 2px;
+      border-radius: 2px;
+      background: #fff;
+      transition: transform 0.3s, opacity 0.3s;
+    }
+
+    .nav-toggle[aria-expanded="true"] span:nth-child(1) {
+      transform: translateY(7px) rotate(45deg);
+    }
+
+    .nav-toggle[aria-expanded="true"] span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .nav-toggle[aria-expanded="true"] span:nth-child(3) {
+      transform: translateY(-7px) rotate(-45deg);
+    }
+
+    /* HERO */
+
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+      padding-top: 80px;
+    }
+
+    .glow {
+      position: absolute;
+      width: 600px;
+      height: 600px;
+      background: #552cff;
+      opacity: 0.16;
+      filter: blur(130px);
+      border-radius: 50%;
+      right: -200px;
+      top: 50px;
+      pointer-events: none;
+    }
+
+    .glow-two {
+      position: absolute;
+      width: 400px;
+      height: 400px;
+      background: #00c6ff;
+      opacity: 0.08;
+      filter: blur(120px);
+      border-radius: 50%;
+      left: -150px;
+      bottom: -100px;
+      pointer-events: none;
+    }
+
+    .hero-content {
+      max-width: 850px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 14px;
+      border-radius: 30px;
+      background: rgba(124, 92, 255, 0.1);
+      border: 1px solid rgba(124, 92, 255, 0.3);
+      color: #b8aaff;
+      font-size: 13px;
+      margin-bottom: 28px;
+    }
+
+    h1 {
+      font-size: clamp(52px, 9vw, 105px);
+      line-height: 0.95;
+      letter-spacing: -5px;
+      margin-bottom: 30px;
+    }
+
+    h1 .gradient {
+      background: linear-gradient(90deg, #fff, #a995ff, #6e4cff);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .,hero-text {
+       max60-width: 650px;
+      color: #9pxb9ba8;
+      font-size: 19);
+px;
+      margin     -bottom: 38px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 15px 25px;
+      border-radius: 12px;
+      font-weight: 700;
+      transition: 0.3s;
+    }
+
+    .button-primary {
+      background: #fff;
+      color: #08080b;
+    }
+
+    .button-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 15px 40px rgba(255, 255, 255, 0.12);
+    }
+
+    .button-secondary {
+      border: 1px solid #292934;
+      color: #ddd;
+    }
+
+    .button-secondary:hover {
+      border-color: #7c5cff;
+      background: rgba(124, 92, 255, 0.08);
+    }
+
+    /* SECTIONS */
+
+    section {
+      padding: 110px 0;
+    }
+
+    .section-label {
+      color: #8067ff;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 15px;
+    }
+
+    .section-title {
+      font-size: clamp(35px, 5vw letter-spacing: -2px;
+      margin-bottom: 50px;
+    }
+
+    /* SERVICES */
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .card {
+      padding: 32px;
+      border-radius: 20px;
+      border: 1px solid #202027;
+      background: linear-gradient(145deg, #101015, #0b0b0f);
+      transition: transform 0.35s, border-color 0.35s, box-shadow 0.35s;
+    }
+
+    .card:hover {
+      transform: translateY(-7px);
+      border-color: rgba(124, 92, 255, 0.55);
+      box-shadow: 0 25px 70px rgba(0, 0, 0, 0.35);
+    }
+
+    .icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 13px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(124, 92, 255, 0.12);
+      border: 1px solid rgba(124, 92, 255, 0.2);
+      margin-bottom: 24px;
+      font-size: 22px;
+    }
+
+    .card h3 {
+      font-size: 22px;
+      margin-bottom: 12px;
+    }
+
+    .card p {
+      color: #898995;
+      font-size: 15px;
+    }
+
+    /* PROJECTS */
+
+    .projects {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+
+    .project {
+      min-height: 330px;
+      padding: 30px;
+      border-radius: 22px;
+      border: 1px solid #202027;
+      position: relative;
+      overflow: hidden;
+      background: #0d0d12;
+    }
+
+    .project::after {
+      content: "";
+      position: absolute;
+      width: 300px;
+      height: 300px;
+      right: -100px;
+      top: -100px;
+      border-radius: 50%;
+      background: #694cff;
+      opacity: 0.12;
+      filter: blur(50px);
+    }
+
+    .project-number {
+      color: #777783;
+      font-size: 13px;
+      margin-bottom: 90px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .project h3 {
+      font-size: 30px;
+      margin-bottom: 10px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .project p {
+      color: #858592;
+      max-width: 480px;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* ABOUT */
+
+    .about {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 70px;
+      align-items: center;
+    }
+
+    .about-text {
+      color: #9999a6;
+      font-size: 17px;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 15px;
+    }
+
+    .stat {
+      padding: 28px;
+      border: 1px solid #202027;
+      border-radius: 18px;
+      background: #0d0d12;
+    }
+
+    .stat strong {
+      display: block;
+      font-size: 36px;
+      margin-bottom: 5px;
+    }
+
+    .stat span {
+      color: #777783;
+      font-size: 14px;
+    }
+
+    /* CTA */
+
+    .cta {
+      padding: 75px 40px;
+      border-radius: 28px;
+      border: 1px solid rgba(124, 92, 255, 0.3);
+      background:
+        radial-gradient(circle at 80% 30%, rgba(124, 92, 255, 0.18), transparent 35%),
+        #0d0d12;
+      text-align: center;
+    }
+
+    .cta h2 {
+      font-size: clamp(38px, 6vw, 70px);
+      letter-spacing: -3px;
+      margin-bottom: 18px;
+    }
+
+    .cta p {
+      color: #92929e;
+      margin-bottom: 30px;
+    }
+
+    /* FOOTER */
+
+    footer {
+      padding: 40px 0;
+      border-top: 1px solid #19191f;
+      color: #666672;
+      font-size: 13px;
+    }
+
+    .footer-content {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    /* MOBILE */
+
+    @media (max-width: 800px) {
+      .services-grid,
+      .projects,
+      .about {
+        grid-template-columns: 1fr;
+      }
+
+      .stats {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      h1 {
+        letter-spacing: -3px;
+      }
+
+      section {
+        padding: 80px 0;
+      }
+
+      /* Мобильное меню-панель */
+
+      .nav-toggle {
+        display: flex;
+      }
+
+      .nav-links {
+        position: absolute;
+        top: 76px;
+        left: 0;
+        width: 100%;
+        display: none;
+        flex-direction: column;
+        gap: 0;
+        padding: 8px 4%;
+        font-size: 16px;
+        background: rgba(7, 7, 10, 0.97);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      }
+
+      .nav-links.is-open {
+        display: flex;
+      }
+
+      .nav-links li {
+        width: 100%;
+      }
+
+      .nav-links a {
+        display: block;
+        padding: 14px 0;
+      }
+    }
+
+    @media (max-width: 500px) {
+      .hero-text {
+        font-size: 16px;
+      }
+
+      .stats {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-content {
+        flex-direction: column;
+      }
+
+      .nav-button {
+        padding: 10px 14px;
+        font-size: 13px;
+      }
+
+      .logo {
+        font-size: 19px;
+        letter-spacing: 2px;
+      }
+    }
+
+    /* Уважение к настройкам пользователя */
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      *,
+      *::before,
+      *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <div class="container">
+      <nav>
+        <a href="#" class="logo">NOVA<span>.</span></a>
+
+        <ul class="nav-links" id="nav-links">
+          <li><a href="#services">Услуги</a></li>
+          <li><a href="#projects">Проекты</a></li>
+          <li><a href="#about">О нас</a></li>
+        </ul>
+
+        <div class="nav-actions">
+          <a href="#contact" class="nav-button">Связаться</a>
+
+          <button
+            type="button"
+            class="nav-toggle"
+            aria-label="Открыть меню"
+            aria-expanded="false"
+            aria-controls="nav-links"
+          >
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- HERO -->
+
+    <section class="hero">
+      <div class="glow" aria-hidden="true"></div>
+      <div class="glow-two" aria-hidden="true"></div>
+
+      <div class="container">
+        <div class="hero-content">
+
+          <div class="badge">
+            <span aria-hidden="true">✦</span> DIGITAL STUDIO
+          </div>
+
+          <h1>
+            Создаём<br>
+            <span class="gradient">digital</span>
+            будущее.
+          </h1>
+
+          <p class="hero-text">
+            Современные сайты, AI-решения и digital-продукты,
+            которые помогают бизнесу выглядеть сильнее и расти быстрее.
+          </p>
+
+          <div class="hero-buttons">
+            <a href="#contact" class="button button-primary">
+              Обсудить проект →
+            </a>
+
+            <a href="#projects" class="button button-secondary">
+              Смотреть проекты
+            </a>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- SERVICES -->
+
+    <section id="services">
+      <div class="container">
+
+        <div class="section-label">01 / SERVICES</div>
+
+        <h2 class="section-title">
+          Что мы создаём
+        </h2>
+
+        <div class="services-grid">
+
+          <div class="card">
+            <div class="icon" aria-hidden="true">◈</div>
+            <h3>Web Design</h3>
+            <p>
+              Современные сайты и лендинги с сильным визуальным стилем,
+              адаптированные под смартфоны и компьютеры.
+            </p>
+          </div>
+
+          <div class="card">
+            <div class="icon" aria-hidden="true">✦</div>
+            <h3>AI Solutions</h3>
+            <p>
+              Используем искусственный интеллект для автоматизации,
+              контента, маркетинга и цифровых продуктов.
+            </p>
+          </div>
+
+          <div class="card">
+            <div class="icon" aria-hidden="true">⌁</div>
+            <h3>Development</h3>
+            <p>
+              Быстрые и функциональные digital-продукты,
+              созданные с использованием современных технологий.
+            </p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+
+    <section id="projects">
+      <div class="container">
+
+        <div class="section-label">02 / PROJECTS</div>
+
+        <h2 class="section-title">
+          Избранные проекты
+        </h2>
+
+        <div class="projects">
+
+          <div class="project">
+            <div class="project-number">PROJECT / 001</div>
+            <h3>AI Platform</h3>
+            <p>
+              Концепт современной платформы с использованием
+              искусственного интеллекта.
+            </p>
+          </div>
+
+          <div class="project">
+            <div class="project-number">PROJECT / 002</div>
+            <h3>Fintech App</h3>
+            <p>
+              Минималистичный интерфейс цифрового финансового продукта.
+            </p>
+          </div>
+
+          <div class="project">
+            <div class="project-number">PROJECT / 003</div>
+            <h3>Creative Studio</h3>
+            <p>
+              Digital-платформа для современной креативной команды.
+            </p>
+          </div>
+
+          <div class="project">
+            <div class="project-number">PROJECT / 004</div>
+            <h3>Future Commerce</h3>
+            <p>
+              Концепция нового поколения интернет-магазина.
+            </p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+
+    <section id="about">
+      <div class="container">
+
+        <div class="section-label">03 / ABOUT</div>
+
+        <div class="about">
+
+          <div>
+            <h2 class="section-title">
+              Меньше<br>
+              шаблонов.<br>
+              Больше идей.
+            </h2>
+
+            <p class="about-text">
+              NOVA DIGITAL помогает компаниям превращать идеи
+              в современные цифровые продукты.
+              Мы объединяем дизайн, технологии и искусственный интеллект,
+              чтобы создавать решения, которые выделяются среди конкурентов.
+            </p>
+          </div>
+
+          <div class="stats">
+
+            <div class="stat">
+              <strong>24/7</strong>
+              <span>Digital mindset</span>
+            </div>
+
+            <div class="stat">
+              <strong>AI</strong>
+              <span>Smart solutions</span>
+            </div>
+
+            <div class="stat">
+              <strong>∞</strong>
+              <span>Creative ideas</span>
+            </div>
+
+            <div class="stat">
+              <strong>100%</strong>
+              <span>Focus on quality</span>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+
+    <section id="contact">
+      <div class="container">
+
+        <div class="cta">
+
+          <h2>Есть идея?</h2>
+
+          <p>
+            Давайте превратим её в цифровой продукт.
+          </p>
+
+          <!-- ЗАМЕНИТЕ адрес на реальный перед публикацией -->
+          <a
+            href="mailto:hello@novadigital.example"
+            class="button button-primary"
+          >
+            Написать нам →
+          </a>
+
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="container">
+
+      <div class="footer-content">
+        <div>© 2026 NOVA DIGITAL</div>
+        <div>Design • AI • Development</div>
+      </div>
+
+    </div>
+  </footer>
+
+  <script>
+    /* ---------- Мобильное меню ---------- */
+
+    const navToggle = document.querySelector('.nav-toggle');
+    const navLinks = document.getElementById('nav-links');
+
+    function closeMenu() {
+      navLinks.classList.remove('is-open');
+      navToggle.setAttribute('aria-expanded', 'false');
+      navToggle.setAttribute('aria-label', 'Открыть меню');
+    }
+
+    navToggle.addEventListener('click', () => {
+      const isOpen = navLinks.classList.toggle('is-open');
+      navToggle.setAttribute('aria-expanded', String(isOpen));
+      navToggle.setAttribute('aria-label', isOpen ? 'Закрыть меню' : 'Открыть меню');
+    });
+
+    // Закрываем меню после клика по ссылке
+    navLinks.querySelectorAll('a').forEach((link) => {
+      link.addEventListener('click', closeMenu);
+    });
+
+    // Закрываем по Esc
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && navLinks.classList.contains('is-open')) {
+        closeMenu();
+        navToggle.focus();
+      }
+    });
+
+    // Сбрасываем состояние при возврате на десктоп
+    window.matchMedia('(min-width: 801px)').addEventListener('change', (event) => {
+      if (event.matches) closeMenu();
+    });
+
+    /* ---------- Плавное появление при прокрутке ---------- */
+
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    if (!reduceMotion && 'IntersectionObserver' in window) {
+      const elements = document.querySelectorAll('.card, .project, .stat, .cta');
+
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.style.opacity = '1';
+              entry.target.style.transform = 'translateY(0)';
+              observer.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.12 }
+      );
+
+      elements.forEach((element) => {
+        element.style.opacity = '0';
+        element.style.transform = 'translateY(25px)';
+        element.style.transition = 'opacity 0.7s ease, transform 0.7s ease';
+        observer.observe(element);
+      });
+    }
+  </script>
+
+</body>
+</html>
